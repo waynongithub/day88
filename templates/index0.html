@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe&Wifi API</title>
+</head>
+<body>
+    <h1>Welcome to the Cafe & Wifi API</h1>
+
+    <form action="{{ url_for('random') }}" method="GET">
+        <button type="submit">get random cafe</button>
+    </form>
+
+    <form action="{{ url_for('all') }}" method="GET">
+        <button type="submit">get all cafes</button>
+    </form>
+
+    <form action="{{ url_for('search', location=location) }}" method="GET">
+        <label for="location">location</label>
+        <input type="text"  name="location" value="Peckham" />
+        <button type="submit">get cafes at this location</button>
+    </form>
+
+  <form action="{{ url_for('update_price', cafe_id=cafe_id, new_price=new_price) }}" method="PATCH">
+        <label for="cafe_id">cafe_id</label>
+        <input type="text"  name="cafe_id" value="2" />
+        <label for="new_price">new_price</label>
+        <input type="text"  name="new_price" value="2" />
+        <button type="submit">set new price</button>
+    </form>
+
+</body>
+</html>

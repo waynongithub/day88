@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!--Don't forget your import here-->
+<!--{% from 'bootstrap5/nav.html' import render_nav_item %}-->
+{% block title %}Edit Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Edit Cafe</h1>
+
+      <!-- This is where your WTForm will go -->
+      <form action="{{ url_for('edit_cafe', cafe_id=cafe.id) }}" method="POST" novalidate>
+        {{ form.csrf_token() }}
+
+        <p>{{ form.name.label }} {{form.name}}  </p>
+        <p>{{ form.map_url.label }} {{ form.map_url }}  </p>
+        <p>{{ form.img_url.label }} {{ form.img_url }}</p>
+        <p>{{ form.location.label }} {{ form.location }}</p>
+        <p>{{ form.seats.label }} {{ form.seats }}</p>
+        <p>{{ form.has_toilet.label }} {{ form.has_toilet }}</p>
+        <p>{{ form.has_wifi.label }} {{ form.has_wifi }}</p>
+        <p>{{ form.has_sockets.label }} {{ form.has_sockets }}</p>
+        <p>{{ form.can_take_calls.label }} {{ form.can_take_calls }}</p>
+        <p>{{ form.coffee_price.label }} {{ form.coffee_price }}</p>
+        <br>
+        {% for err in form.errors %}
+          <p style="color:red;">{{err}}</p>
+        {% endfor %}
+        {{ form.submit }}
+
+
+      </form>
+
+
+	  <p class="space-above"><a href="{{ url_for('all_cafes') }}">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
